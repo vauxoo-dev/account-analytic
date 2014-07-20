@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+<!--
+     In order to comply with all the configuration necesary, we will create a
+     project, this project will create an analytic account.
+     -->
+        <record id="project_project_1" model="project.project">
+            <field name="date_start" eval="time.strftime('%Y-%m-01 10:00:00')"/>
+            <field name="state">open</field>
+            <field name="type">normal</field>
+            <field name="name">Project X</field>
+            <field name="color">4</field>
+            <!--
+            <field name="partner_id" ref="base.res_partner_10"/>
+            <field name="parent_id" ref="all_projects_account"/>
+            -->
+            <field name="members" eval="[(6, 0, [
+                    ref('base.user_root')])]"/>
+            <field name="description">This project will need a lot of design
+                computing stuff</field>
+            <field name="alias_model">project.task</field>
+        </record>
+
+<!--
+     I will create 4 analytic accounts to manage the cost of 4 employees
+     -->
+
+        <record id="analytic_account_emp_root" model="account.analytic.account">
+            <field name="date_start" eval="time.strftime('%Y-%m-01 10:00:00')"/>
+            <field name="name">Employees</field>
+            <field name="type">view</field>
+        </record>
+        <record id="analytic_account_emp_1" model="account.analytic.account">
+            <field name="date_start" eval="time.strftime('%Y-%m-01 10:00:00')"/>
+            <field name="parent_id" eval="ref('analytic_account_emp_root')"/>
+            <field name="name">Alex</field>
+        </record>
+        <record id="analytic_account_emp_2" model="account.analytic.account">
+            <field name="date_start" eval="time.strftime('%Y-%m-01 10:00:00')"/>
+            <field name="parent_id" eval="ref('analytic_account_emp_root')"/>
+            <field name="name">Betty</field>
+        </record>
+        <record id="analytic_account_emp_3" model="account.analytic.account">
+            <field name="date_start" eval="time.strftime('%Y-%m-01 10:00:00')"/>
+            <field name="parent_id" eval="ref('analytic_account_emp_root')"/>
+            <field name="name">Carlos</field>
+        </record>
+        <record id="analytic_account_emp_4" model="account.analytic.account">
+            <field name="date_start" eval="time.strftime('%Y-%m-01 10:00:00')"/>
+            <field name="parent_id" eval="ref('analytic_account_emp_root')"/>
+            <field name="name">Diego</field>
+        </record>
+
+<!--Now is when we can create the account.analytic.plan.instance where we will
+     split the cost of the user case
+     -->
+        <record id="plan_0" model="account.analytic.plan">
+            <field name="name">Employees + Projects</field>
+        </record>
+        <record id="analytic_account_plan_0" model="account.analytic.plan.instance">
+            <field name="plan_id" eval="ref('plan_0')"/>
+            <field name="name">25% per employee + 100% per Project X</field>
+            <field name="code">X25-100</field>
+        </record>
+        <record id="analytic_account_plan_line_1" model="account.analytic.plan.instance.line">
+            <field name="plan_id" eval="ref('analytic_account_plan_0')"/>
+            <field name="rate">25.00</field>
+            <field name="analytic_account_id" eval="ref('analytic_account_emp_1')"/>
+        </record>
+        <record id="analytic_account_plan_line_2" model="account.analytic.plan.instance.line">
+            <field name="plan_id" eval="ref('analytic_account_plan_0')"/>
+            <field name="rate">25.00</field>
+            <field name="analytic_account_id" eval="ref('analytic_account_emp_2')"/>
+        </record>
+        <record id="analytic_account_plan_line_3" model="account.analytic.plan.instance.line">
+            <field name="plan_id" eval="ref('analytic_account_plan_0')"/>
+            <field name="rate">25.00</field>
+            <field name="analytic_account_id" eval="ref('analytic_account_emp_3')"/>
+        </record>
+        <record id="analytic_account_plan_line_4" model="account.analytic.plan.instance.line">
+            <field name="plan_id" eval="ref('analytic_account_plan_0')"/>
+            <field name="rate">25.00</field>
+            <field name="analytic_account_id" eval="ref('analytic_account_emp_4')"/>
+        </record>
+        <record id="analytic_account_plan_line_5" model="account.analytic.plan.instance.line">
+            <field name="plan_id" eval="ref('analytic_account_plan_0')"/>
+            <field name="rate">100.00</field>
+            <field name="analytic_account_id" search="[('name', '=', 'Project X')]"/>
+        </record>
+    </data>
+</openerp>
