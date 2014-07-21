@@ -25,6 +25,25 @@
     "author": "Vauxoo",
     "website": "www.vauxoo.com",
     "category": "Generic Modules/Projects & Services",
+    "license": "AGPL-3",
+    "depends": [
+        "project",
+        "account_accountant",
+        "account_analytic_plans",
+        "purchase_analytic_plans",
+        "sale_analytic_plans",
+    ],
+    "data": [
+    ],
+    "demo": [
+        "demo/aap_demo.xml",
+        "demo/invoice_demo.yml",
+    ],
+    "test": [
+        "test/test_purchase_invoice_plan.yml",
+    ],
+    "active": False,
+    "installable": True,
     "description": """
 Pre-Config Account Analytic Plans
 =================================
@@ -59,20 +78,4 @@ set the analytic accounting to look like this:
 - 50% goes to Employee B
 - 100% goes to Project X 
     """,
-    "license": "AGPL-3",
-    "depends": [
-        "project",
-        "account_analytic_plans",
-    ],
-    "data": [
-    ],
-    "demo": [
-        "demo/aap_demo.xml",
-        "demo/invoice_demo.yml",
-    ],
-    "test": [
-        "test/test_purchase_invoice_plan.yml",
-    ],
-    "active": False,
-    "installable": True
 }

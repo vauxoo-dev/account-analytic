@@ -14,7 +14,7 @@
   !python {model: account.invoice.confirm}: |
     self.invoice_confirm(cr, uid, [ref("account_invoice_confirm_0")], {"lang": 'en_US',
       "tz": False, "active_model": "account.invoice", "active_ids": [ref("account_invoice_analytics")],
-      "type": "out_invoice", "active_id": ref("account_invoice_analytics"), })
+      "active_id": ref("account_invoice_analytics"), })
 -
   I check that customer invoice state is "Open"
 -
