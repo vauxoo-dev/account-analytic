@@ -65,10 +65,13 @@ set the analytic accounting to look like this:
         "account_analytic_plans",
     ],
     "data": [
-        "demo/aap_demo.xml", #One Time I finish this I will load on demo only
     ],
     "demo": [
-        #"demo/aap_demo.xml", Uncomment when develpment is ready
+        "demo/aap_demo.xml",
+        "demo/invoice_demo.yml",
+    ],
+    "test": [
+        "test/test_purchase_invoice_plan.yml",
     ],
     "active": False,
     "installable": True

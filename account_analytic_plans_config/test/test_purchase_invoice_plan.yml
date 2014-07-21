@@ -1,0 +1,22 @@
+-
+  I check that Initially customer invoice state is "Draft"
+-
+  !assert {model: account.invoice, id: account_invoice_analytics}:
+    - state == 'draft'
+-
+  I called the "Confirm Draft Invoices" wizard
+-
+  !record {model: account.invoice.confirm, id: account_invoice_confirm_0}:
+    {}
+-
+  I clicked on Confirm Invoices Button
+-
+  !python {model: account.invoice.confirm}: |
+    self.invoice_confirm(cr, uid, [ref("account_invoice_confirm_0")], {"lang": 'en_US',
+      "tz": False, "active_model": "account.invoice", "active_ids": [ref("account_invoice_analytics")],
+      "type": "out_invoice", "active_id": ref("account_invoice_analytics"), })
+-
+  I check that customer invoice state is "Open"
+-
+  !assert {model: account.invoice, id: account_invoice_analytics}:
+    - state == 'open'
