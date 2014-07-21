@@ -37,10 +37,10 @@
     ],
     "demo": [
         "demo/aap_demo.xml",
-        "demo/invoice_demo.yml",
+        #"demo/invoice_demo.xml",
     ],
     "test": [
-        "test/test_purchase_invoice_plan.yml",
+        #"test/test_purchase_invoice_plan.yml",
     ],
     "active": False,
     "installable": True,
@@ -76,6 +76,6 @@ set the analytic accounting to look like this:
 
 - 50% goes to Employee A
 - 50% goes to Employee B
-- 100% goes to Project X 
+- 100% goes to Project X
     """,
 }

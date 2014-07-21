@@ -25,7 +25,6 @@
 <!--
      I will create 4 analytic accounts to manage the cost of 4 employees
      -->
-
         <record id="analytic_account_emp_root" model="account.analytic.account">
             <field name="date_start" eval="time.strftime('%Y-%m-01 10:00:00')"/>
             <field name="name">Employees</field>

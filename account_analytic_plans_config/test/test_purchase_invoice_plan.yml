@@ -1,4 +1,23 @@
 -
+   In order to validate that an invoice is not broken with Analytic Plans I create an Invoice
+-
+  !record {model: account.invoice, view: purchase_analytic_plans.invoice_supplier_form_inherit , id: account_invoice_analytics}:
+    account_id: account.a_recv
+    company_id: base.main_company
+    currency_id: base.EUR
+    invoice_line:
+      - account_id: account.a_sale
+        name: '[PCSC234] PC Assemble SC234'
+        price_unit: 450.0
+        quantity: 1.0
+        product_id: product.product_product_3
+        uos_id: product.product_uom_unit
+        analytics_id: account_analytic_plans_config.analytic_account_plan_0
+    journal_id: account.bank_journal
+    partner_id: base.res_partner_12
+    reference_type: none
+    type: out_invoice
+-
   I check that Initially customer invoice state is "Draft"
 -
   !assert {model: account.invoice, id: account_invoice_analytics}:
