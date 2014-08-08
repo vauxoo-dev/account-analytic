@@ -37,10 +37,10 @@
     ],
     "demo": [
         "demo/aap_demo.xml",
-        #"demo/invoice_demo.xml",
+        "demo/invoice_demo.xml",
     ],
     "test": [
-        #"test/test_purchase_invoice_plan.yml",
+        "test/test_purchase_invoice_plan.yml",
     ],
     "active": False,
     "installable": True,
