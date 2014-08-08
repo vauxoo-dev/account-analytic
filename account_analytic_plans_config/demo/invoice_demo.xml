@@ -21,7 +21,7 @@
         <record id="demo_invoice_0_line_rpanrearpanelshe0" model="account.invoice.line">
             <field name="invoice_id" ref="demo_invoice_0"/>
             <field name="account_id" ref="account.a_expense"/>
-            <field name="analytics_ids" ref="account_analytic_plans_config.analytic_account_plan_0"/>
+            <field name="analytics_id" ref="account_analytic_plans_config.analytic_account_plan_0"/>
             <field name="uos_id" ref="product.product_uom_unit"/>
             <field name="price_unit" eval="10.0" />
             <field name="price_subtotal" eval="10.0" />
@@ -35,7 +35,7 @@
         <record id="demo_invoice_0_line_rckrackcm0" model="account.invoice.line">
             <field name="invoice_id" ref="demo_invoice_0"/>
             <field name="account_id" ref="account.a_expense"/>
-            <field name="analytics_ids" ref="account_analytic_plans_config.analytic_account_plan_0"/>
+            <field name="analytics_id" ref="account_analytic_plans_config.analytic_account_plan_0"/>
             <field name="uos_id" ref="product.product_uom_unit"/>
             <field name="price_unit" eval="4.0"/>
             <field name="price_subtotal" eval="4.0"/>
